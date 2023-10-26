@@ -13,8 +13,8 @@ export class HomePage {
   adicionarNumero(valor: string) {
     if (this.numeros.length === 0) {
       this.numeros.push(valor);
-    } else if (this.operadores.length < this.numeros.length) {//ele verifica se o array de numeros é menor que o array de operações
-      this.numeros[this.numeros.length - 1] += valor;// se menor ele contatena o numero clicado a posição anterior do vetor
+    } else if (this.operadores.length < this.numeros.length) {
+      this.numeros[this.numeros.length - 1] += valor;
     } else {
       this.numeros.push(valor);
     }
