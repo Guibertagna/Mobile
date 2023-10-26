@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
+  templateUrl: 'home.page.html',  
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
@@ -22,7 +22,7 @@ export class HomePage {
   }
 
   adicionarOperacao(valor: string) {
-    if (this.numeros.length > 0) {
+    if (this.numeros.length > 0  && this.numeros.length !=this.operadores.length)  {
       this.operadores.push(valor);
       this.atualizarVisor();
     }
@@ -76,14 +76,14 @@ export class HomePage {
     this.visor = '0';
     this.numeros = [];
     this.operadores = [];
-  }
+  } 
 
   atualizarVisor() {
     let expressao = '';
     for (let i = 0; i < this.numeros.length; i++) {
       expressao += this.numeros[i];
       if (i < this.operadores.length) {
-        expressao += ' ' + this.operadores[i] + ' ';
+        expressao +=  this.operadores[i] ;
       }
     }
     this.visor = expressao;

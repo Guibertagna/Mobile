@@ -5,7 +5,7 @@
     <ion-item></ion-item>
     <ion-item></ion-item>
     <ion-item>
-      <ion-input [(ngModel)]="visor"></ion-input>
+      <ion-input [(ngModel)]="visor" disabled></ion-input>
     </ion-item>
     <ion-item>
       <ion-fab-button class="operacao2" (click)="zerar()">
@@ -67,7 +67,7 @@
       <ion-fab-button id="zero" (click)="adicionarNumero('0')">
         0
       </ion-fab-button>
-      <ion-fab-button>
+      <ion-fab-button (click)="adicionarNumero('.')">
         ,
       </ion-fab-button>
       <ion-fab-button class="operacao" (click)="calcular()">

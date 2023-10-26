@@ -11,6 +11,12 @@ ion-input{
   text-align: right;
   margin-right: 7%;
 }
+.scrolling-text {
+  direction: rtl; 
+  white-space: nowrap; 
+  overflow: hidden; 
+}
+
 
 ion-fab-button{
   width: 20%;
