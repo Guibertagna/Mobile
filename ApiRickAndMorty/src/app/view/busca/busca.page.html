@@ -1,45 +1,35 @@
-<div class="container">
-  <h1>Rick and Morty Search Page</h1>
+<!-- busca.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Busca</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <!-- Search for Characters -->
-  <div>
-    <h2>Search for Characters</h2>
-    <input
-      type="text"
-      placeholder="Enter character name"
-      [(ngModel)]="characterName"
-    />
-    <button (click)="searchCharacters()">Search</button>
-  </div>
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchTerms" (ionChange)="search()"></ion-searchbar>
 
-  <!-- Character Search Results -->
-  <div *ngIf="characterResults">
-    <h3>Character Search Results</h3>
-    <ul>
-      <li *ngFor="let character of characterResults">
-        {{ character.name }}
-      </li>
-    </ul>
-  </div>
-
-  <!-- Search for Episodes -->
-  <div>
-    <h2>Search for Episodes</h2>
-    <input
-      type="text"
-      placeholder="Enter episode name or code"
-      [(ngModel)]="episodeName"
-    />
-    <button (click)="searchEpisodes()">Search</button>
-  </div>
-
-  <!-- Episode Search Results -->
-  <div *ngIf="episodeResults">
-    <h3>Episode Search Results</h3>
-    <ul>
-      <li *ngFor="let episode of episodeResults">
-        {{ episode.name }}
-      </li>
-    </ul>
-  </div>
-</div>
+  <ion-segment [(ngModel)]="type" (ionChange)="search()">
+    <ion-segment-button value="character">
+      Personagem
+    </ion-segment-button>
+    <ion-segment-button value="episode">
+      Episódio
+    </ion-segment-button>
+  </ion-segment>
+  <ion-list>
+    <ion-item *ngFor="let item of result | async">
+      <ion-avatar slot="start">
+        <img *ngIf="item.image" [src]="item.image" alt="Avatar">
+      </ion-avatar>
+      <ion-label *ngIf="item.name">{{ item.name }}</ion-label>
+      <ion-label *ngIf="item.status">Status: {{ item.status }}</ion-label>
+      <ion-label *ngIf="item.type === 'episode'">Episódio: {{ item.episode }}</ion-label>
+      <!-- Adicione mais campos conforme necessário -->
+    </ion-item>
+  </ion-list>
+  
+  
+  
+  
+  
+</ion-content>

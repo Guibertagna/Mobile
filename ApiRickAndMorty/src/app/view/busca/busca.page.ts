@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RickAndMortyServiceService } from 'src/app/service/rick-and-morty-service.service';
+import { RickAndMortyServiceService, SearchType } from 'src/app/service/rick-and-morty-service.service';
+import { Observable, map } from 'rxjs';
 @Component({
   selector: 'app-busca',
   templateUrl: './busca.page.html',
@@ -7,28 +8,20 @@ import { RickAndMortyServiceService } from 'src/app/service/rick-and-morty-servi
 })
 
 export class BuscaPage implements OnInit{
-  characterName: string = '';
-  episodeName: string = '';
-  characterResults: any[] = [];
+  searchTerms: string = '';
+  result! : Observable<any>;
   episodeResults: any[] = [];
+  type : SearchType = SearchType.Episode;
 
   constructor(private rickAndMortyService: RickAndMortyServiceService) {}
 
-  searchCharacters() {
-    this.rickAndMortyService
-      .searchCharacters(this.characterName)
-      .subscribe((data) => {
-        this.characterResults = data.results;
-      });
+  search() {
+    this.result = this.rickAndMortyService.getAll(this.searchTerms, this.type).pipe(
+      map(results => results['results'])
+    );
   }
+  
 
-  searchEpisodes() {
-    this.rickAndMortyService
-      .searchEpisodes(this.episodeName)
-      .subscribe((data) => {
-        this.episodeResults = data.results;
-      });
-  }
   ngOnInit() {
   }
 }
