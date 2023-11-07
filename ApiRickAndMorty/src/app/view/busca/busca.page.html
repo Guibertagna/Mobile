@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Rick and Morty Search Page</h1>
+
+  <!-- Search for Characters -->
+  <div>
+    <h2>Search for Characters</h2>
+    <input
+      type="text"
+      placeholder="Enter character name"
+      [(ngModel)]="characterName"
+    />
+    <button (click)="searchCharacters()">Search</button>
+  </div>
+
+  <!-- Character Search Results -->
+  <div *ngIf="characterResults">
+    <h3>Character Search Results</h3>
+    <ul>
+      <li *ngFor="let character of characterResults">
+        {{ character.name }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Search for Episodes -->
+  <div>
+    <h2>Search for Episodes</h2>
+    <input
+      type="text"
+      placeholder="Enter episode name or code"
+      [(ngModel)]="episodeName"
+    />
+    <button (click)="searchEpisodes()">Search</button>
+  </div>
+
+  <!-- Episode Search Results -->
+  <div *ngIf="episodeResults">
+    <h3>Episode Search Results</h3>
+    <ul>
+      <li *ngFor="let episode of episodeResults">
+        {{ episode.name }}
+      </li>
+    </ul>
+  </div>
+</div>
