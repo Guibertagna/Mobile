@@ -15,7 +15,11 @@ export class RickAndMortyServiceService {
   constructor(private http: HttpClient) {}
   getAll(title: string, tipo: SearchType): Observable<any> {
     const url = `${this.baseUrl}/${tipo}/?name=${encodeURI(title)}`;
-    console.log('URL da solicitação:', url); // Adicione esta linha para verificar a URL
+    return this.http.get(url);
+  }
+  getById(id: any, tipo: SearchType) {
+    const url = `${this.baseUrl}/${tipo}/${id}`;
+    
     return this.http.get(url);
   }
   
