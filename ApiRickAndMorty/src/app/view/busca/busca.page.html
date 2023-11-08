@@ -21,9 +21,9 @@
       <ion-avatar slot="start">
         <img *ngIf="item.image" [src]="item.image" alt="Avatar">
       </ion-avatar>
-      <ion-label *ngIf="item.name">{{ item.name }}</ion-label>
+      <ion-label *ngIf="item.name">Nome: {{ item.name }}</ion-label>
       <ion-label *ngIf="item.status">Status: {{ item.status }}</ion-label>
-      <ion-label *ngIf="item.type === 'episode'">Episódio: {{ item.episode }}</ion-label>
+      <ion-label *ngIf="type === 'episode'">Episódio: {{ item.episode }}</ion-label>
     </ion-item>
   </ion-list>
   

@@ -1,0 +1,41 @@
+page-detalhes {
+    ion-header {
+      ion-toolbar {
+        --background: #3498db; // Cor de fundo do cabeçalho
+        --color: #fff; // Cor do texto no cabeçalho
+      }
+    }
+  
+    ion-content {
+      ion-card {
+        background-color: #fff; // Cor de fundo do card
+        border-radius: 10px; // Cantos arredondados
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // Sombra
+  
+        ion-card-title {
+          font-size: 24px; // Tamanho da fonte do título
+          font-weight: bold; // Texto em negrito
+          margin-bottom: 8px;
+        }
+  
+        ion-card-subtitle {
+          font-size: 16px; // Tamanho da fonte do subtítulo
+          color: #555; // Cor do subtítulo
+          margin-bottom: 16px;
+        }
+  
+        ion-list {
+          ion-item {
+            font-size: 18px; // Tamanho da fonte do texto do item
+          }
+        }
+  
+        ion-img {
+          border-radius: 10px 10px 0 0; // Cantos arredondados superiores
+          max-height: 200px; // Altura máxima da imagem
+          object-fit: cover; // Ajuste da imagem
+        }
+      }
+    }
+  }
+  

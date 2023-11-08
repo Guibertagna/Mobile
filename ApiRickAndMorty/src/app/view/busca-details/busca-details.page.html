@@ -1,10 +1,9 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Detalhes do Personagem</ion-title>
+    <ion-title>Detalhes</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,28 +11,25 @@
   <ion-card *ngIf="info">
     <ion-card-header>
       <ion-card-title>{{ info.name }}</ion-card-title>
+      <ion-card-subtitle *ngIf="info.status">Status: {{ info.status }}</ion-card-subtitle>
     </ion-card-header>
-    
+    <ion-list *ngIf="info.air_date || info.episode ">
+      <ion-item *ngIf="info.air_date">Data de lançamento: {{ info.air_date }}</ion-item>
+      <ion-item *ngIf="info.episode">Episódio: {{ info.episode }}</ion-item>
+    </ion-list>
+  </ion-card>
+
+
+  <ion-card *ngIf="info">
     <ion-card-content>
-      <h1>Status:{{info.status}}</h1>
-      <ion-img *ngIf="info.image" [src]="info.image" alt="Imagem do Personagem"></ion-img>
       <ion-list>
-        <ion-item>
-          <ion-label>Espécie:</ion-label>
-          {{ info.species }}
+        <ion-item *ngIf="info.image">
+          <ion-img [src]="info.image" alt="Imagem do Personagem"></ion-img>
         </ion-item>
-        <ion-item>
-          <ion-label>Gênero:</ion-label>
-          {{ info.gender }}
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label>Origem:</ion-label>
-        </ion-item>
-        <ion-item>{{ info.origin.name }}</ion-item>
-        <ion-item lines="none">
-          <ion-label>Localização:</ion-label>
-        </ion-item>
-        <ion-item>{{ info.location.name }}</ion-item>
+        <ion-item *ngIf="info.species">Espécie: {{ info.species }}</ion-item>
+        <ion-item *ngIf="info.gender">Gênero: {{ info.gender }}</ion-item>
+        <ion-item *ngIf="info.origin.name">Origem: {{ info.origin.name }}</ion-item>
+        <ion-item *ngIf="info.location.name">Localização: {{ info.location.name }}</ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
