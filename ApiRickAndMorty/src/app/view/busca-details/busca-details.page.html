@@ -1,36 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Detalhes</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Detalhes</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-  <ion-card *ngIf="info">
-    <ion-card-header>
-      <ion-card-title>{{ info.name }}</ion-card-title>
-      <ion-card-subtitle *ngIf="info.status">Status: {{ info.status }}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-list *ngIf="info.air_date || info.episode ">
-      <ion-item *ngIf="info.air_date">Data de lançamento: {{ info.air_date }}</ion-item>
-      <ion-item *ngIf="info.episode">Episódio: {{ info.episode }}</ion-item>
-    </ion-list>
-  </ion-card>
-
-
-  <ion-card *ngIf="info">
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngIf="info.image">
-          <ion-img [src]="info.image" alt="Imagem do Personagem"></ion-img>
+  <ion-content>
+    <ion-card *ngIf="info">
+      <ion-card-header>
+        <ion-card-title>{{ info.name }}</ion-card-title>
+        <ion-card-subtitle *ngIf="info.status">Status: {{ info.status }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-list *ngIf="info.air_date || info.episode ">
+        <ion-item *ngIf="info.air_date">Data de lançamento: {{ info.air_date }}</ion-item>
+        <ion-item *ngIf="info.air_date">Episódio: {{info.episode}}</ion-item>
+        <ion-item *ngIf="episodes.length > 0">
+          <ion-label>Episódios:</ion-label>
+          <ion-grid>
+            <ion-row  >
+              <ion-col  size="12" size-md="6" size-lg="4"  *ngFor="let episode of episodes.slice(0, episodesToShow)"  >
+                <ion-item>{{ episode.name }}</ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          
+          <ion-button  (click)="showMoreEpisodes()" *ngIf="episodesToShow < episodes.length">
+            Exibir Mais
+          </ion-button>
         </ion-item>
-        <ion-item *ngIf="info.species">Espécie: {{ info.species }}</ion-item>
-        <ion-item *ngIf="info.gender">Gênero: {{ info.gender }}</ion-item>
-        <ion-item *ngIf="info.origin.name">Origem: {{ info.origin.name }}</ion-item>
-        <ion-item *ngIf="info.location.name">Localização: {{ info.location.name }}</ion-item>
+        
       </ion-list>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+    </ion-card>
+
+
+    <ion-card *ngIf="info">
+      <ion-card-content *ngIf="info.gender">
+        <ion-list *ngIf="info.gender">
+          <ion-item *ngIf="info.image">
+            <ion-img [src]="info.image" alt="Imagem do Personagem"></ion-img>
+          </ion-item>
+          <ion-item *ngIf="info.species">Espécie: {{ info.species }}</ion-item>
+          <ion-item *ngIf="info.gender">Gênero: {{ info.gender }}</ion-item>
+          <ion-item *ngIf="info.origin.name">Origem: {{ info.origin.name }}</ion-item>
+          <ion-item *ngIf="info.location.name">Localização: {{ info.location.name }}</ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
